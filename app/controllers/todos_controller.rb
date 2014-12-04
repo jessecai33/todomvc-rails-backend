@@ -1,6 +1,7 @@
 class TodosController < ApplicationController
   before_action :set_todo, only: [:show, :update, :destroy]
   respond_to :json
+  protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
 
   # GET /todos.json
   def index
@@ -14,7 +15,7 @@ class TodosController < ApplicationController
 
   # POST /todos.json
   def create
-    respond_with Todo.new(todo_params)
+    respond_with Todo.create(todo_params)
   end
 
   # PATCH /todos/1.json

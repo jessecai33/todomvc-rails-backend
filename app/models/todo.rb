@@ -1,3 +1,3 @@
 class Todo < ActiveRecord::Base
-  validates_presence_of :title, :completed_at
+  validates_presence_of :title
 end
