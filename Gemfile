@@ -43,3 +43,6 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Quiet assets pipeline log in development
+gem 'quiet_assets', group: :development
