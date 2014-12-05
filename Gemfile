@@ -46,3 +46,6 @@ end
 
 # Quiet assets pipeline log in development
 gem 'quiet_assets', group: :development
+
+# knockout.js
+gem 'knockoutjs-rails'
