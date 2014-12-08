@@ -27,26 +27,14 @@ todomvc.factory('todoStorage', function ($http, $injector) {
 			todos: [],
 
 			clearCompleted: function () {
-				var originalTodos = store.todos.slice(0);
-
-				var completeTodos = [], incompleteTodos = [];
 				store.todos.forEach(function (todo) {
 					if (todo.is_completed) {
-						completeTodos.push(todo);
-					} else {
-						incompleteTodos.push(todo);
+						$http.delete('/todos/' + todo.id).success(function() {
+							store.todos.splice(store.todos.indexOf(todo), 1);
+						});
 					}
 				});
-
-				angular.copy(incompleteTodos, store.todos);
-
-				return $http.delete('/todos')
-					.then(function success() {
-						return store.todos;
-					}, function error() {
-						angular.copy(originalTodos, store.todos);
-						return originalTodos;
-					});
+				return store.todos;
 			},
 
 			delete: function (todo) {
