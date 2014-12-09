@@ -128,7 +128,6 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
-  ember-data-source (>= 1.0.0.beta7)
   ember-rails
   jbuilder (~> 1.2)
   jquery-rails
